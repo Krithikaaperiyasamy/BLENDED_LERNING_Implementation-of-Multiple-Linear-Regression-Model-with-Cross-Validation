@@ -32,8 +32,15 @@ data.head()
 X = data.drop('price', axis=1)
 y = data['price']
 X_train, X_test, y_train, y_test = train_test_split(X, y,test_size=0.2, random_state=42)
-odel = LinearRegression()
+model = LinearRegression()
 model.fit(X_train, y_train)
+
+print('Name: KRITHIKAA P ')
+print('Reg. No: 212225040193')
+print("\n== Cross-Validation ==")
+cv_scores = cross_val_score(model,X,y,cv=5)
+print("Fold R^2 scores:", [f"{score:.4f}" for score in cv_scores])
+print(f"Average R^2:{cv_scores.mean():.4f}")
 
 y_pred =model.predict(X_test)
 print("\n=== Test Set Performance ===")
